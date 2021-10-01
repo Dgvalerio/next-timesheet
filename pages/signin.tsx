@@ -3,17 +3,19 @@ import { signIn, useSession } from 'next-auth/client';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-import { Button, Container, Typography } from '@mui/material';
+import { Button, Grid, Typography } from '@mui/material';
+
+import Loading from '../components/loading';
 
 const SignIn: NextPage = () => {
   const [session, loading] = useSession();
   const router = useRouter();
 
-  if (loading) return <h1>loading...</h1>;
+  if (loading) return <Loading />;
 
   if (session) {
     router.replace('/');
-    return <h1>Authorized</h1>;
+    return <Loading />;
   }
 
   return (
@@ -22,14 +24,18 @@ const SignIn: NextPage = () => {
         <title>Next Timesheet - SignIn</title>
       </Head>
 
-      <Container>
-        <Typography component="h1" variant="h3">
-          SignIn Page
-        </Typography>
-        <Button type="button" onClick={() => signIn()}>
-          SignIn with GitHub
-        </Button>
-      </Container>
+      <Grid container justifyContent="center" alignSelf="center" gap={2}>
+        <Grid item xs={12}>
+          <Typography component="h1" variant="h3" align="center">
+            Entre com sua conta do GitHub
+          </Typography>
+        </Grid>
+        <Grid item>
+          <Button variant="outlined" onClick={() => signIn()}>
+            Conectar
+          </Button>
+        </Grid>
+      </Grid>
     </>
   );
 };
