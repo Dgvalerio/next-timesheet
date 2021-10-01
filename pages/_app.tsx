@@ -3,15 +3,22 @@ import { Provider } from 'next-auth/client';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 
+import { CssBaseline, ThemeProvider } from '@mui/material';
+
+import theme from '../styles/theme';
+
 const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => (
-  <Provider session={pageProps.session}>
+  <>
     <Head>
       <title>Timesheet Next</title>
-      <meta name="description" content="Timesheet Next" />
-      <link rel="icon" href="/favicon.ico" />
     </Head>
-    <Component {...pageProps} />
-  </Provider>
+    <Provider session={pageProps.session}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </Provider>
+  </>
 );
 
 export default MyApp;

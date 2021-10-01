@@ -3,6 +3,8 @@ import { signIn, useSession } from 'next-auth/client';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
+import { Button, Container, Typography } from '@mui/material';
+
 const SignIn: NextPage = () => {
   const [session, loading] = useSession();
   const router = useRouter();
@@ -20,12 +22,14 @@ const SignIn: NextPage = () => {
         <title>Next Timesheet - SignIn</title>
       </Head>
 
-      <main>
-        <h1>SignIn Page</h1>
-        <button type="button" onClick={() => signIn()}>
+      <Container>
+        <Typography component="h1" variant="h3">
+          SignIn Page
+        </Typography>
+        <Button type="button" onClick={() => signIn()}>
           SignIn with GitHub
-        </button>
-      </main>
+        </Button>
+      </Container>
     </>
   );
 };
