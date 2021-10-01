@@ -17,6 +17,7 @@ const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => (
   <>
     <Head>
       <title>Timesheet Next</title>
+      <meta name="viewport" content="initial-scale=1, width=device-width" />
     </Head>
     <Provider session={pageProps.session}>
       <MUIProvider theme={theme}>
