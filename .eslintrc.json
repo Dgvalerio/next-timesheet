@@ -1,16 +1,21 @@
 {
   "root": true,
+  "env": {
+    "cypress/globals": true
+  },
   "parser": "@typescript-eslint/parser",
   "extends": [
     "airbnb",
     "next/core-web-vitals",
     "prettier",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "plugin:cypress/recommended"
   ],
   "plugins": [
     "prettier",
     "import-helpers",
-    "@typescript-eslint"
+    "@typescript-eslint",
+    "cypress"
   ],
   "rules": {
     /**
