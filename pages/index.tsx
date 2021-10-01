@@ -14,7 +14,7 @@ const Home: NextPage = () => {
   if (loading) return <Loading />;
 
   if (!session) {
-    router.replace('/signin');
+    router.replace('/auth/signin');
     return <Loading />;
   }
 
@@ -30,7 +30,9 @@ const Home: NextPage = () => {
             Hello, {session.user?.name}!
           </Typography>
           <Typography>Signed in as {session.user?.email}</Typography>
-          <Button onClick={() => signOut()}>Sign out</Button>
+          <Button variant="outlined" onClick={() => signOut()}>
+            Sign out
+          </Button>
         </Grid>
       </Grid>
     </>
